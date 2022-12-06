@@ -1,6 +1,8 @@
 # Present-Picker
 Create and send wishlists for holidays and more!
 
+
+
 Project Goal: 
 
 Deployed Link:  </br>
@@ -51,7 +53,4 @@ Deployed Date:
 Task details supplied by UT Austin Coding Bootcamp.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-=======
-
 
