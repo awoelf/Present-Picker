@@ -22,7 +22,7 @@ const listSchema = new Schema({
         required: true,
         default: 'default'
     },
-    Items: [itemSchema],
+    items: [itemSchema],
 });
 
 const List = model('List', listSchema);
