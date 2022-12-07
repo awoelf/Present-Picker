@@ -1,14 +1,14 @@
 [
     {
-      "name": "Christmas List",
+      "listName": "Christmas List",
       "listAuthor": "monica@email.com"
     },
     {
-      "name": "Birthdays",
+      "listName": "Birthdays",
       "listAuthor": "phoebe@email.com"
     },
     {
-      "name": "Christmas",
+      "listName": "Christmas",
       "listAuthor": "rachel@email.com"
     }
 ]

@@ -9,11 +9,13 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
-import Search from "./pages/Search";
-import Dashboard from "./pages/Search";
+import ListPage from "./pages/ListPage";
+import Dashboard from "./pages/ListPage";
+import Email from "./pages/Email";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import SearchResults from './components/SearchItem';
@@ -49,11 +51,13 @@ function App() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/me" element={<Profile />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/list-page" element={<ListPage />} />
+          <Route path="/email" element={<Email />} />
         </Routes>
         <Footer />
       </Router>
