@@ -18,6 +18,7 @@ import Dashboard from "./pages/ListPage";
 import Email from "./pages/Email";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import SearchResults from './components/SearchItem';
 
 // From 21 MERN/26/Solved/client/src/App.js
 // Construct our main GraphQL API endpoint
