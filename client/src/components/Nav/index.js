@@ -42,8 +42,8 @@ function Nav() {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/search" activeClassName="active">
-              <a className="nav-link">Search</a>
+            <NavLink to="/list-page" activeClassName="active">
+              <a className="nav-link">List Page</a>
             </NavLink>
           </li>
           <li className="nav-item">
