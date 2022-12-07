@@ -25,6 +25,9 @@ const itemSchema = new Schema(
         size: {
             type: String,
         },
+        color: {
+            type: String,
+        },
         details: {
             type: [String]
         },
