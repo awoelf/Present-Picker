@@ -16,6 +16,7 @@ import Search from "./pages/Search";
 import Dashboard from "./pages/Search";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import SearchResults from './components/SearchItem';
 
 // From 21 MERN/26/Solved/client/src/App.js
 // Construct our main GraphQL API endpoint

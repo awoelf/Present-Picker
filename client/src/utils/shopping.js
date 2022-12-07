@@ -1,21 +1,23 @@
+require('dotenv').config()
 const SerpApi = require('google-search-results-nodejs');
-const search = new SerpApi.GoogleSearch(
-  `abe8dc34c3841c315bae3ff25400aab17df6c768b9cba6577d3fcf991b3183ed`
-);
+const search = new SerpApi.GoogleSearch(process.env.SEARCH_API_KEY);
 
 const getSearchResults = async (query) => {
+  // Search terms
   const params = {
     q: query,
     tbm: 'shop',
     hl: 'en',
     gl: 'us',
   };
+  
+  // 
+  const results = search.json(params, (data) => {
+    // console.log(data["inline_shopping_results"]); Display search results in console
+    return data["inline_shopping_results"];
+  });
 
-  const callback = (data) => {
-    console.log(data['product_results']);
-  };
-
-  search.json(params, callback);
+  return results;
 };
 
-getSearchResults('blanket');
+module.exports = getSearchResults;

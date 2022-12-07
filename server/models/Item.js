@@ -23,7 +23,7 @@ const itemSchema = new Schema(
             min: 1,
         },
         size: {
-            type: Mixed,
+            type: String,
         },
         color: {
             type: String
