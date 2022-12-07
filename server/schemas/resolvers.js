@@ -66,19 +66,19 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addItem: async (parent, { listId, itemText }, context) => {
-      if (context.user) {
-        return List.findOneAndUpdate(
-          { _id: listId },
-          {$addToSet: {
-              items: { itemText, email: context.user.email }}},
-          {new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    // addItem: async (parent, { listId, itemText }, context) => {
+    //   if (context.user) {
+    //     return List.findOneAndUpdate(
+    //       { _id: listId },
+    //       {$addToSet: {
+    //           items: { itemText, email: context.user.email }}},
+    //       {new: true,
+    //         runValidators: true,
+    //       }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
     removeList: async (parent, { listId }, context) => {
       if (context.user) {
         const list = await list.findOneAndDelete({
@@ -96,17 +96,17 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeItem: async (parent, { listId, itemId }, context) => {
-      if (context.user) {
-        return List.findOneAndUpdate(
-          { _id: listId },
-          {$pull: { items: { _id: itemId,
-            email: context.user.email }}},
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    // removeItem: async (parent, { listId, itemId }, context) => {
+    //   if (context.user) {
+    //     return List.findOneAndUpdate(
+    //       { _id: listId },
+    //       {$pull: { items: { _id: itemId,
+    //         email: context.user.email }}},
+    //       { new: true }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
     
   },
 };
