@@ -1,0 +1,14 @@
+[
+    {
+      "name": "Christmas List",
+      "listAuthor": "monica@email.com"
+    },
+    {
+      "name": "Birthdays",
+      "listAuthor": "phoebe@email.com"
+    },
+    {
+      "name": "Christmas",
+      "listAuthor": "rachel@email.com"
+    }
+]
