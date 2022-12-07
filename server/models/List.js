@@ -10,6 +10,10 @@ const listSchema = new Schema({
         maxLength: 32,
         trim: true
     },
+    listAuthor: {
+        type: String,
+        required: true,
+    },
     description: {
         type: String,
         required: false,
