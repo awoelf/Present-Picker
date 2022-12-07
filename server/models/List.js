@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const itemSchema = require('./Item');
 
 const listSchema = new Schema({
-    name: {
+    listName: {
         type: String,
         required: true,
         default: 'My List',

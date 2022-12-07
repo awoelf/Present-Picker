@@ -2,7 +2,7 @@ const { Schema } = require('mongoose');
 
 const itemSchema = new Schema(
     {
-        name: {
+        itemName: {
             type: String,
             required: true,
             minLength: 1,
