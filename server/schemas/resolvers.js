@@ -1,22 +1,23 @@
+//referenced lesson 21.26 -- edited to match models
 const { AuthenticationError } = require('apollo-server-express');
-//TODO: update objects from models once completed
-const { List, Item } = require('../models');
+const { User, List, Item } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate('users');
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+    user: async (parent, { email }) => {
+    return User.findOne({ email }).populate('user');
     },
-    lists: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+    lists: async (parent, { email }) => {
+    const params = email ? { email } : {};
+    return List.find(params);
+    // .sort({ createdAt: -1 }) removed from after params above
     },
-    list: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+    list: async (parent, { listId }) => {
+      return List.findOne({ _id: listId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -27,8 +28,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { email, password }) => {
+      const user = await User.create({ email, password });
       const token = signToken(user);
       return { token, user };
     },
@@ -49,38 +50,60 @@ const resolvers = {
 
       return { token, user };
     },
-    //TODO: update once named in model
-    addList: async (parent, { thoughtText }, context) => {
+    addList: async (parent, { listText }, context) => {
       if (context.user) {
         const list = await List.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
+          listText,
+          email: context.user.email,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
+          { $addToSet: { list: list._id } }
         );
 
-        return thought;
+        return list;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    //TODO: update with model once completed 
-    removeList: async (parent, { thoughtId }, context) => {
+    addItem: async (parent, { listId, itemText }, context) => {
       if (context.user) {
-        const thought = await thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
+        return List.findOneAndUpdate(
+          { _id: listId },
+          {$addToSet: {
+              items: { itemText, email: context.user.email }}},
+          {new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeList: async (parent, { listId }, context) => {
+      if (context.user) {
+        const list = await list.findOneAndDelete({
+          _id: listId,
+          email: context.user.email,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thought._id } },
+          { $pull: { lists: list._id } },
           { new: true }
         );
 
-        return thought;
+        return list;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeItem: async (parent, { listId, itemId }, context) => {
+      if (context.user) {
+        return List.findOneAndUpdate(
+          { _id: listId },
+          {$pull: { items: { _id: itemId,
+            email: context.user.email }}},
+          { new: true }
+        );
       }
       throw new AuthenticationError('You need to be logged in!');
     },
