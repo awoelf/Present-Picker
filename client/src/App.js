@@ -14,7 +14,7 @@ import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import Search from "./pages/Search";
 import Dashboard from "./pages/Search";
-import Header from "./components/Header";
+import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
 // From 21 MERN/26/Solved/client/src/App.js
@@ -46,19 +46,15 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/me" element={<Profile />} />
-              <Route path="/search" element={<Search />} />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/me" element={<Profile />} />
+          <Route path="/search" element={<Search />} />
+        </Routes>
+        <Footer />
       </Router>
     </ApolloProvider>
   );
