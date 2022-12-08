@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.2",
     "dotenv": "^16.0.3",
     "google-search-results-nodejs": "^2.1.0",
     "graphql": "^16.6.0",
