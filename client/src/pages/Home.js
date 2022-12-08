@@ -1,5 +1,6 @@
 import React from "react";
 import giftImg from "../images/pexels-george-dolgikh-1666070.jpg";
+import '../Style.css';
 
 function Home() {
   return (
