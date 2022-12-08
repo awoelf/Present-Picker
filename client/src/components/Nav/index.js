@@ -22,17 +22,12 @@ function Nav() {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto float-right">
           <li className="nav-item">
-            <NavLink to="/login" activeClassName="active">
-              <a className="nav-link">Login</a>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/signup" activeClassName="active">
-              <a className="nav-link">Sign Up</a>
-            </NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink to="/" activeClassName="active">
+              <a className="nav-link">Home</a>
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/dashboard" activeClassName="active">
               <a className="nav-link">Dashboard</a>
             </NavLink>
           </li>
@@ -47,8 +42,19 @@ function Nav() {
             </NavLink>
           </li>
           <li className="nav-item">
+            <NavLink to="/signup" activeClassName="active">
+              <a className="nav-link">Sign Up</a>
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/login" activeClassName="active">
+              <a className="nav-link">Login</a>
+            </NavLink>
+          </li>
+          <li className="nav-item">
             <NavLink to="/logout" activeClassName="active">
               <a className="nav-link">Logout</a>
+              {/* Add logout functionality. Send user back to homepage. */}
             </NavLink>
           </li>
         </ul>
