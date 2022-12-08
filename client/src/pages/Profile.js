@@ -6,10 +6,10 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
 const Profile = () => {
-  const { email } = useParams();
+  const { email: useParams } = useParams();
 
-  const { loading, data } = useQuery(email ? QUERY_USER : QUERY_ME, {
-    variables: { email },
+  const { loading, data } = useQuery(useParams ? QUERY_USER : QUERY_ME, {
+    variables: { email: useParams },
   });
 
   const user = data?.me || data?.user || {};
@@ -36,7 +36,7 @@ const Profile = () => {
         <div className="card mb-3">
           <div className="row g-0">
             <div className="col-md-4">
-              <i class="bi bi-person-circle"></i>
+              <img src="..." className="img-fluid rounded-start" alt="..." />
             </div>
             <div className="col-md-8">
               <div className="card-body">

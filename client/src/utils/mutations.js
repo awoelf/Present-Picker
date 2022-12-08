@@ -13,7 +13,7 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser( $email: String!, $password: String!) {
+  mutation addUser($email: String!, $password: String!) {
     addUser(email: $email, password: $password) {
       token
       user {
@@ -21,9 +21,8 @@ export const ADD_USER = gql`
         email
       }
     }
+  }
 `;
-
-// # TODO: LIST ALL DETAILS UNDER ITEMS??
 
 export const ADD_LIST = gql`
   mutation addList($listText: String!) {
@@ -38,8 +37,6 @@ export const ADD_LIST = gql`
     }
   }
 `;
-
-// # TODO LIST ALL DETAILS FOR ITEM LIST?
 
 export const ADD_ITEM = gql`
   mutation addItem($listId: ID!, $itemName: String!) {
