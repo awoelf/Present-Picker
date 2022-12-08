@@ -6,24 +6,24 @@ const typeDefs = gql`
     _id: ID
     email: String
     password: String
-    lists: [Lists]!
+    lists: [List]!
   }
   type List {
     _id: ID
     listName: String
     description: String
     theme: String
-    items: [Items]!
+    items: [Item]!
   }
   type Item {
     _id: ID
     itemName: String
-    price: Number
+    price: Int
     retailer: String
     link: String
-    quantity: Number
+    quantity: Int
     details: String
-    size: Mixed
+    size: Int
     color: String
     image: String
   }
