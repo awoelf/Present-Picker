@@ -14,11 +14,10 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import ListPage from "./pages/ListPage";
-import Dashboard from "./pages/ListPage";
+import Dashboard from "./pages/Dashboard";
 import Email from "./pages/Email";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import SearchResults from './components/SearchItem';
 
 // From 21 MERN/26/Solved/client/src/App.js
 // Construct our main GraphQL API endpoint
