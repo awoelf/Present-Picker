@@ -26,29 +26,33 @@ export const ADD_USER = gql`
   }
 `;
 
+# TODO: LIST ALL DETAILS UNDER ITEMS??
+
 export const ADD_LIST = gql`
   mutation addList($listText: String!) {
     addList(listText: $listText) {
       _id
-      listText
-      email
+      listName
+      listAuthor
       items {
         _id
-        itemText
+        itemName
       }
     }
   }
 `;
 
+# TODO LIST ALL DETAILS FOR ITEM LIST?
+
 export const ADD_ITEM = gql`
-  mutation addItem($listId: ID!, $itemText: String!) {
-    addItem(listId: $listId, itemText: $itemText) {
+  mutation addItem($listId: ID!, $itemName: String!) {
+    addItem(listId: $listId, itemName: $itemName) {
       _id
-      listText
-      email
+      listName
+      listAuthor
       items {
         _id
-        itemText
+        itemName
       }
     }
   }
