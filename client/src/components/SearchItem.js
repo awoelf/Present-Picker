@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import getSearchResults from '../utils/shopping';
 
-const SearchItem = () => {
+// props will contain the list id
+const SearchItem = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState('');
-  const [item, setItem] = useState([]);
+  const [item, setItem] = useState('');
 
-  const handleSearchInput = (e) => {
+  useEffect(() => {
+    handleAddItemToList()
+  }, [item]);
+
+  const handleInputUpdate = (e) => {
     const { target } = e;
     const inputValue = target.value;
 
@@ -23,16 +28,9 @@ const SearchItem = () => {
     setSearchQuery('');
   };
 
-  const handleAddItem = () => {
-    // This SHOULD get the values of the selected entry and set them to item!!!
-    setItem([
-      this.itemName,
-      this.price,
-      this.retailer,
-      this.link,
-      this.details,
-      this.image
-    ])
+  // Called when the item state is changed
+  // 
+  const handleAddItemToList = () => {
   }
 
   return (
@@ -43,26 +41,14 @@ const SearchItem = () => {
           type="text"
           placeholder="Search for presents"
           value={searchQuery}
-          onChange={handleSearchInput}
+          onChange={handleInputUpdate}
           name="searchQuery"
         />
         <button onClick={handleSearchSubmit}>Search</button>
       </div>
-      {/* 
-        This SHOULD create an entry for each search item 
-        I need to test if the refs work!!!!
-      */}
       {results
-        ? results.map((item) => (
-            <div>
-              <p ref={this.itemName}>item name: {item.title}</p>
-              <p ref={this.link}>link: {item.link}</p>
-              <p ref={this.retailer}>retailer: {item.source}</p>
-              <p ref={this.price}>price: {item.extracted_price}</p>
-              <p ref={this.details}>details: {item.extensions}</p>
-              <img src={item.thumbnail} ref={this.image}/>
-              <button onClick={handleAddItem}>Add item</button>
-            </div>
+        ? results.map((result) => (
+            <Result result={result} setItem={setItem}/>
           ))
         : <p>Search for an item to find listings!</p>}
     </div>
