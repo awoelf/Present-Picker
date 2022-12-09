@@ -1,7 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import Auth from "../../utils/auth";
+
 function Nav() {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <NavLink className="navbar-brand" to="/">
@@ -52,21 +58,30 @@ function Nav() {
               <a className="nav-link">List Page</a>
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink to="/signup" activeClassName="active">
-              <a className="nav-link">Sign Up</a>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/login" activeClassName="active">
-              <a className="nav-link">Login</a>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/logout" activeClassName="active">
-              <a className="nav-link">Logout</a>
-              {/* Add logout functionality. Send user back to homepage. */}
-            </NavLink>
+          {/* <li className="nav-item"></li>
+          <li className="nav-item"></li> */}
+          <li className="nav-item mt-2">
+            {Auth.loggedIn() ? (
+              <>
+                <NavLink activeClassName="active" to="/me">
+                  {Auth.getProfile().data.email}'s profile'
+                </NavLink>
+                <a className="nav-link" onClick={logout}>
+                  Logout
+                </a>
+              </>
+            ) : (
+              <>
+                <NavLink to="/login" activeClassName="active">
+                  <a className="nav-link d-inline">Login</a>
+                </NavLink>
+                <NavLink to="/signup" activeClassName="active">
+                  <a className="nav-link d-inline">Sign Up</a>
+                </NavLink>
+              </>
+            )}
+
+            {/* Add logout functionality. Send user back to homepage. */}
           </li>
         </ul>
       </div>
