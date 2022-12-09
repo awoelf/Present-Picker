@@ -2,6 +2,8 @@ require('dotenv').config()
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
+// Accepts a list of recipients, a subject, and the html for the list
+// Sends an email to the recipients from alexis@presentpickerapp.com
 const sendEmail = (recipients, subject, html) => {
     // Email content
     const msg = {
