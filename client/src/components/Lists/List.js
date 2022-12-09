@@ -18,7 +18,8 @@ const List = (props) => {
     return (
         <div>
             <p>{props.listName}</p>
-            <p>{props.numItems}</p>
+            <p>{props.numItems} items</p>
+            {/* Buttons do not render properly at the moment */}
             <button onClick={handleEmailList}><i class="bi bi-envelope"></i></button>
             <button onClick={handleEditList}><i class="bi bi-pencil"></i></button>
             <button onClick={handleDeleteList}><i class="bi bi-trash"></i></button>

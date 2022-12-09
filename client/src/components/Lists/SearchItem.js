@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import getSearchResults from '../utils/shopping';
+import getSearchResults from '../../utils/shopping';
 import Result from './Result';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
