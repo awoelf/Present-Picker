@@ -1,6 +1,7 @@
 // Spacing is off. No functionality.
 
 import React from "react";
+import List from "../components/Lists/List";
 
 function Dashboard() {
   return (
@@ -23,6 +24,13 @@ function Dashboard() {
             Add List
           </a>
           <ul className="row ">
+            {/* List components here! When we have backend functionality, */}
+            {/* Create a map function to render each of the user's lists */}
+            <List 
+              listId='12345'
+              listName="MyList"
+              numItems="5"
+            />
             <li className="saved-lists row d-inline bg-success rounded-1 p-2 text-white mt-1">
               <span className="list-name col-6">Gifts for my friends</span>
               <span className="number-of-items col-6">5 items</span>
