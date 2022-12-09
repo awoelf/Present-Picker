@@ -1,8 +1,36 @@
 // Spacing is off. No functionality.
 
 import React from "react";
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import Auth from "../utils/auth";
 
 function Dashboard() {
+   const { email } = useParams();
+
+   const { loading, data } = useQuery(email ? QUERY_USER : QUERY_ME, {
+     variables: { email },
+   });
+
+   const user = data?.me || data?.user || {};
+   if (Auth.loggedIn() && Auth.getProfile().data.email === useParams) {
+     return <Navigate to="/me" />;
+   }
+
+   if (loading) {
+     return <div>Loading...</div>;
+   }
+
+   if (!user.email) {
+     return (
+       <h4 className="text-center mt-5">
+         You need to be logged in to see this. <br></br> Use the navigation
+         links above to sign up or log in!
+       </h4>
+     );
+   }
   return (
     <div className="container">
       <h1 className="text-center">Dashboard</h1>
