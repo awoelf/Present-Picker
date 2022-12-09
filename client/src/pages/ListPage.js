@@ -118,9 +118,9 @@ function ListPage() {
         <ul>
           {/* Displays items in list */}
           {/* When we have back end functionality, all items in list will be rendered with map function */}
-          <ListItem 
+          {/* <ListItem 
             itemId='12345'
-          />
+          /> */}
           <li className="list-item">
             Blender $59.99 - Target{" "}
             <svg
