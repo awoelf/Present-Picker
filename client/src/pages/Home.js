@@ -5,7 +5,7 @@ import '../Style.css';
 function Home() {
   return (
     <div className="container">
-      <img title="" className="gifts col-md-12" src={giftImg} alt="Gifts"></img>
+      <img style={{ width: 500, height: 500 }} title="logo" className= "gifts col-md-12" src={giftImg} alt="Gifts"></img>
     </div>
   );
 }
