@@ -1,5 +1,5 @@
 import React from "react";
-import giftImg from "../images/pexels-george-dolgikh-1666070.jpg";
+import giftImg from "../images/PresentPicker.png";
 import '../Style.css';
 
 function Home() {
