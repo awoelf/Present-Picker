@@ -1,4 +1,5 @@
 import React from "react";
+import sendEmail from "../utils/email";
 
 function Email() {
   return (
