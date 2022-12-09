@@ -1,5 +1,3 @@
-const { default: ListItem } = require("./ListItem");
-
 // Import list style sheet
 
 const ListHtml = (listId) => {
@@ -14,7 +12,7 @@ const ListHtml = (listId) => {
             <p>{list.description}</p>
             {list.items
             ? list.items.map((itemId) => {
-                <ListItem itemId={itemId} />
+                <ListItem id={itemId} itemId={itemId} />
             })
             : null
             }
