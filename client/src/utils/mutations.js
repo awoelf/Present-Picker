@@ -54,6 +54,20 @@ export const ADD_ITEM = gql`
 `;
 
 
-//delete list
+//remove list
+export const REMOVE_LIST = gql`
+mutation RemoveList($listId: ID!) {
+  removeList(listId: $listId) {
+    _id
+  }
+}
+`;
 
-//delete item
+// remove item
+export const REMOVE_ITEM = gql`
+mutation RemoveItem($itemId: ID!, $listId: ID!) {
+  removeItem(itemId: $itemId, listId: $listId) {
+    _id
+  }
+}
+`;
