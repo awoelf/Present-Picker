@@ -9,7 +9,8 @@ const resolvers = {
       return User.find().populate('lists');
     },
     user: async (parent, { email }) => {
-    return User.findOne({ email }).populate('list');
+    return User.findOne({ email }).populate('lists');
+    // return User.findOne({ email }).populate('list');
     },
     lists: async (parent, { email }) => {
     const params = email ? { email } : {};

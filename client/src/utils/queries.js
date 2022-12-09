@@ -57,15 +57,17 @@ export const QUERY_SINGLE_LIST = gql`
 export const QUERY_ME = gql`
   query me {
     me {
+    _id
+    email
+    password
+    lists {
       _id
-      email
-      lists {
-        _id
-        listName
-        listAuthor
-        description
-        theme
-      }
+      listName
+      listAuthor
+      description
+      theme
     }
+
+  }
   }
 `;
