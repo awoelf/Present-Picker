@@ -20,3 +20,5 @@ const Result = ({ result, setItem }) => {
     </div>
   );
 };
+
+export default Result;
