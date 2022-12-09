@@ -15,12 +15,5 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  },
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false,
-    "net": false,
-    "tls": false
   }
 }
