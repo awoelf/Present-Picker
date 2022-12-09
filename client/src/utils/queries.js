@@ -17,7 +17,7 @@ export const QUERY_USER = gql`
     }
   }
 `;
-//TODO plural vs singular list???
+
 export const QUERY_LISTS = gql`
   query getLists {
     lists {
@@ -53,7 +53,7 @@ export const QUERY_SINGLE_LIST = gql`
     }
   }
 `;
-//TODO: find lists by id, name, author, desc, or theme???
+
 export const QUERY_ME = gql`
   query me {
     me {
