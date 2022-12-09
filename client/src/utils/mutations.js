@@ -52,3 +52,8 @@ export const ADD_ITEM = gql`
     }
   }
 `;
+
+
+//delete list
+
+//delete item

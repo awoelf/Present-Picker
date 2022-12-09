@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 
-//TODO: Password included under email, above list??? reference models/user.js
+//TODO: Password included under email, above lists??? reference models/user.js
 export const QUERY_USER = gql`
   query user($email: String!) {
     user(email: $email) {

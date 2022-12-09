@@ -11,6 +11,7 @@ const typeDefs = gql`
   type List {
     _id: ID
     listName: String
+    listAuthor: String
     description: String
     theme: String
     items: [Item]!
@@ -18,6 +19,7 @@ const typeDefs = gql`
   type Item {
     _id: ID
     itemName: String
+    authorName: String
     price: Int
     retailer: String
     link: String
@@ -46,6 +48,19 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addList(listText: String!): List
     removeList(listId: ID!): List
+    addItem(
+        listId: ID!,
+        itemName: String!,
+        price: Int!,
+        retailer: String!,
+        link: String!,
+        quantity: Int!,
+        size: Int!,
+        color: String!,
+        details: [String]!,
+        image: String!
+        ):List
+    removeItem(listId: ID!, itemId: ID!):List
   }
 `;
 
