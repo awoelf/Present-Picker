@@ -51,6 +51,9 @@ const resolvers = {
 
       return { token, user };
     },
+    
+    //TODO: ADD LOGOUT??
+
     addList: async (parent, { listText }, context) => {
       if (context.user) {
         const list = await List.create({
