@@ -70,4 +70,14 @@ export const QUERY_ME = gql`
 
   }
   }
+  `;
+
+  export const QUERY_ID = gql`
+  query getItem ($listId: ID!) {
+  list(listId: $listId) {
+    items {
+      _id
+    }
+  }
+}
 `;
