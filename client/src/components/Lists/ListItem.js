@@ -1,19 +1,31 @@
+import { useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_ID } from '../../utils/queries';
+import { REMOVE_ITEM } from '../../utils/mutations';
 
 // Renders an item for display in a list
-// Accepts an item id
-const ListItem = (props) => {
-  // Add line here that gets the details of the item based on id
-  // const item = ...
+// Accepts an item id and list id
+const ListItem = async (props) => {
+  const [getItem] = useQuery(QUERY_ID);
+  const [removeItem, { error }] = useMutation(REMOVE_ITEM);
 
+  // Load item from props.itemId
+  const loadItem = await getItem({
+    variables: { listId: props.listId, itemId: props.itemId },
+  });
+  const [item, setItem] = useState(loadItem);
+
+  // Handler for editing the item
   const handleEditItem = () => {
-    // Handler for editing the item
-    // Return to modal where you choose between searching item or manually inputing the details
-    // If the user selects search item, they will have to input a new search term
+    // OPEN MODAL AND PASS THIS ITEM'S ID
   }
 
-  const handleDeleteItem = () => {
-    // Handler for deleting the item
+  // Handler for deleting the item
+  const handleDeleteItem = async () => {
+    await removeItem({
+      variables: { itemId: props.itemId, listId: props.listId }
+    })
   }
 
   // Conditionally render item details

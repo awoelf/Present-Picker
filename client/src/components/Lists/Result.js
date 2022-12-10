@@ -1,11 +1,18 @@
-const Result = ({ result, setItem }) => {
+const Result = (props) => {
   // Obtaining item information
   const { title, link, source, extracted_price, thumbnail, extensions } =
-    result;
-
+    props.result;
+  
   // When add item button is clicked, this handler will set the item state to the selected result's details
   const handleAddItem = () => {
-    setItem({ title, link, source, extracted_price, thumbnail, extensions });
+    props.setItem({
+      title,
+      link,
+      source,
+      extracted_price,
+      thumbnail,
+      extensions,
+    });
   };
 
   return (
