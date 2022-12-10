@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { REMOVE_ITEM } from '../../utils/mutations';
 
+// Component for displaying user lists in dashboard
 // Accepts the list id, list name, and number of items in list as arguments
 const List = (props) => {
+    const [RemoveList, { error }] = useMutation(REMOVE_ITEM);
     const handleEmailList = () => {
-        // Redirect to email page
-        // Make sure list id is passed to email page
+        // NAVIGATE TO EMAIL PAGE
+        // PASS props.listID
     }
 
     const handleEditList = () => {
-        // Return to list edit
+        // NAVIGATE TO LIST PAGE
+        // PASS props.listId
     }
 
-    const handleDeleteList = () => {
+    const handleDeleteList = async () => {
         // Delete list and associated items
+        await RemoveList({
+            variables: { listId: props.listId }
+        })
     }
 
     return (

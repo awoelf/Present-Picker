@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_ID } from '../../utils/queries';
+import { ADD_ITEM } from '../../utils/mutations';
 
 // This component is for the user to manually input values for an item they will add to the list.
 // props will contain the list id and item id (if being edited)
-const InputItem = (props) => {
+const InputItem = async (props) => {
   const [item, setItem] = useState('');
-  // item details
   const [itemName, setItemName] = useState('');
   const [retailer, setRetailer] = useState('');
   const [link, setLink] = useState('');
@@ -14,12 +16,18 @@ const InputItem = (props) => {
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
   const [price, setPrice] = useState('');
+  const [getItem] = useQuery(QUERY_ID);
+  const [addItem, { error }] = useMutation(ADD_ITEM);
 
   // If the item is being edited, load existing values
   if (props.itemId) {
-    // const loadItem = ...
-    setItem(loadItem);
+    // Query getItem to get the values of the item that matches the itemId
+    const loadItem = await getItem({
+      variables: { listId: props.listId, itemId: props.itemId },
+    });
 
+    // Set item values
+    setItem(loadItem);
     setItemName(item.itemName);
     setRetailer(item.retailer);
     setLink(item.link);
@@ -53,10 +61,16 @@ const InputItem = (props) => {
   };
 
   // Called when the item state is changed
-  const handleAddItemToList = () => {
+  const handleAddItemToList = async () => {
     setItem({ itemName, retailer, link, quantity, color, size, price });
 
-    // Add item to list here
+    if (props.itemId) {
+      // UPDATE item
+    } else {
+      await addItem({
+        variables: { listId: props.listId },
+      });
+    }
   };
 
   return (
