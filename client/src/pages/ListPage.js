@@ -52,21 +52,21 @@ function ListPage() {
               className="dropdown-item"
               onClick={() => toggleTheme()}
             >
-              {ListBirthday}
+              {theme}
               Birthday 🎉
             </Dropdown.Item>
             <Dropdown.Item
               className="dropdown-item"
               onClick={() => toggleTheme()}
             >
-              {ListChristmas}
+              {theme}
               Christmas 🎄
             </Dropdown.Item>
             <Dropdown.Item
               className="dropdown-item"
               onClick={() => toggleTheme()}
             >
-              {ListHalloween}
+              {theme}
               Halloween 🎃
             </Dropdown.Item>
           </Dropdown.Menu>
