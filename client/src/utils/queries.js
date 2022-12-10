@@ -77,6 +77,16 @@ export const QUERY_ME = gql`
   list(listId: $listId) {
     items {
       _id
+      itemName
+      authorName
+      price
+      retailer
+      link
+      quantity
+      details
+      size
+      color
+      image
     }
   }
 }
