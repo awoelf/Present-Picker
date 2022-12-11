@@ -46,8 +46,9 @@ const typeDefs = gql`
   type Mutation {
     addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addList(listText: String!): List
+    addList(listName: String!, listAuthor: String!): List
     removeList(listId: ID!): List
+    updateList(listId: ID!, listName: String!): List
     addItem(
         listId: ID!,
         itemName: String!,
@@ -61,6 +62,17 @@ const typeDefs = gql`
         image: String!
         ):List
     removeItem(listId: ID!, itemId: ID!):List
+    updateItem(
+        itemId: ID!, 
+        itemName: String!,
+        price: Int,
+        retailer: String,
+        link: String,
+        quantity: Int,
+        size: Int,
+        color: String,
+        details: [String],
+        image: String):List
   }
 `;
 
