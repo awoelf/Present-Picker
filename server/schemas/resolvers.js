@@ -51,14 +51,12 @@ const resolvers = {
 
       return { token, user };
     },
-    
-    //TODO: ADD LOGOUT??
 
     addList: async (parent, { listText }, context) => {
       if (context.user) {
         const list = await List.create({
           listText,
-          email: context.user.email,
+          listAuthor: context.user.email,
         });
 
         await User.findOneAndUpdate(
@@ -85,7 +83,6 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     
-//remove list with context
     removeList: async (parent, { listId }, context) => {
       if (context.user) {
         console.log(context.user)
@@ -121,8 +118,66 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    
+
+    //update a list
+
+    updateList: async (parent, { listId, ...args }, context) => {
+      if (context.user) {
+        const updatedList = await List.findOneAndUpdate(
+          {_id: listId},
+          {$set:{
+            listName: args.listName,
+            listAuthor: args.listAuthor,
+            description: args.description,
+            theme: args.theme,}},
+            { runValidators: true, new: true }
+        );
+      return updatedList;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+      //update an item
+      // currently returns null
+    updateItem: async (parent, { itemId, ...args }, context) => {
+        if (context.user) {
+          //if I use Item, an error occurs
+          const updatedItem = await List.findOneAndUpdate(
+            {_id: itemId},
+            {$set:{
+              itemName: args.itemName,
+              price: args.price,
+              retailer: args.retailer,
+              link: args.link,
+              quantity: args.quantity,
+              size: args.size,
+              color: args.color,
+              details: args.details,
+              image: args.image,}},
+              { runValidators: true, new: true }
+          );
+        return updatedItem;
+        }
+        throw new AuthenticationError('You need to be logged in!');
+      },
   },
+
+  
 };
+
+//referenced code from 18 homework
+// updateThought(req, res) {
+//   Thought.findOneAndUpdate(
+//     { _id: req.params.thoughtId },
+//     { $set: req.body },
+//     { runValidators: true, new: true }
+//   )
+//     .then((thought) =>
+//       !thought
+//         ? res.status(404).json({ message: 'No thought with this id!' })
+//         : res.json(thought)
+//     )
+//     .catch((err) => res.status(500).json(err));
+// },
 
 module.exports = resolvers;
