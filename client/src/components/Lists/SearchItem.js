@@ -4,6 +4,8 @@ import Result from './Result';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_ITEM } from '../../utils/mutations';
 
 // props will contain the list id
 // If props.itemId is passed, the item will be updated
@@ -11,6 +13,7 @@ const SearchItem = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState('');
   const [item, setItem] = useState('');
+  const [addItem, { error }] = useMutation(ADD_ITEM);
 
   useEffect(() => {
     handleAddItemToList();
@@ -34,11 +37,13 @@ const SearchItem = (props) => {
   };
 
   // Called when the item state is changed
-  const handleAddItemToList = () => {
+  const handleAddItemToList = async () => {
     if (props.itemId) {
       // UPDATE ITEM
     } else {
-      // CREATE NEW ITEM
+      await addItem({
+        variables: { listId: props.listId, ...item },
+      });
     }
   };
 

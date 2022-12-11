@@ -70,4 +70,24 @@ export const QUERY_ME = gql`
 
   }
   }
+  `;
+
+  export const QUERY_ID = gql`
+  query getItem ($listId: ID!) {
+  list(listId: $listId) {
+    items {
+      _id
+      itemName
+      authorName
+      price
+      retailer
+      link
+      quantity
+      details
+      size
+      color
+      image
+    }
+  }
+}
 `;
