@@ -3,56 +3,59 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Navigate, useParams } from "react-router-dom";
-import { useQuery, useMutation } from "@apollo/client";
-
+// import { Navigate, useParams } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_SINGLE_LIST, QUERY_LISTS } from '../utils/queries';
 import { ADD_LIST } from '../utils/mutations';
 import Auth from '../utils/auth';
-
-import List from "../components/Lists/List";
+import List from '../components/Lists/List';
 
 const Dashboard = () => {
-  const [description, setDescription] = useState('');
+  const [listName, setListName] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
-  const {loading: meLoading, data: meData, error: meError}=useQuery(QUERY_ME)
-  const me = meData?.me || meData?.currentID || {}
-  console.log(me)
-  const [addList, { error }] = useMutation(ADD_LIST, {
-    update(cache, { data: { addList } }) {
-      try {
-        const lists = cache.readQuery({ query: QUERY_LISTS }) || [];
-          console.log(lists)
-        cache.writeQuery({
-          query: QUERY_LISTS,
-          data: { lists: [addList, ...lists] },
-        });
-      } catch (err) {
-        console.error(JSON.parse(JSON.stringify(err)));
-      }
+  // const {loading: meLoading, data: meData, error: meError}=useQuery(QUERY_ME)
+  // const me = meData?.me || meData?.currentID || {}
+  // console.log(me)
+  const [addList, {error}] = useMutation(ADD_LIST);
+  // const [addList, { error }] = useMutation(ADD_LIST, {
+    // update(cache, { data: { addList } }) {
+    //   try {
+    //     const { lists } = cache.readQuery({ query: QUERY_LISTS }) || [];
+    //       console.log(lists)
+    //     cache.writeQuery({
+    //       query: QUERY_LISTS,
+    //       data: { lists: [addList, ...lists] },
+    //     });
+    //   } catch (err) {
+    //     console.error(JSON.parse(JSON.stringify(err)));
+    //   }
 
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, lists: [...me.lists, addList] } },
-      });
-    },
-  });
+    //   // update me object's cache
+    //   const { me } = cache.readQuery({ query: QUERY_ME });
+    //   cache.writeQuery({
+    //     query: QUERY_ME,
+    //     data: { me: { ...me, lists: [...me.lists, listName] } },
+    //   });
+    // },
+  // });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addList({
-        variables: {
-          ...description,
-          listAuthor: me.email,
-        },
-      });
-console.log(data);
-      setDescription('');
+      // const { data } = await addList({
+      //   variables: {
+      //     listName,
+      //     listAuthor: me.email,
+      //   },
+      // });
+      addList({variables: {
+            listName,
+            listAuthor: 'placeholder'
+          }})
+// // console.log(data);
+      setListName(listName);
     } catch (err) {
       console.error(JSON.parse(JSON.stringify(err)));
     }
@@ -61,8 +64,8 @@ console.log(data);
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'description' && value.length <= 280) {
-      setDescription(value);
+    if (name === 'listName' && value.length <= 280) {
+      setListName(value);
       setCharacterCount(value.length);
     }
   };
@@ -86,9 +89,9 @@ console.log(data);
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="description"
+                name="listName"
                 placeholder="Here's a new list..."
-                value={description}
+                value={listName}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
