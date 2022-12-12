@@ -3,14 +3,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery, useMutation } from "@apollo/client";
 
 import { QUERY_USER, QUERY_ME, QUERY_SINGLE_LIST, QUERY_LISTS } from '../utils/queries';
 import { ADD_LIST } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-import List from '../components/Lists/List';
+import List from "../components/Lists/List";
 
 const Dashboard = () => {
   const [description, setDescription] = useState('');

@@ -13,8 +13,11 @@ const SearchItem = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState('');
   const [item, setItem] = useState('');
-  const addItem = useMutation(ADD_ITEM);
-  const updateItem = useMutation(UPDATE_ITEM);
+  const [addItem] = useMutation(ADD_ITEM);
+  const [updateItem] = useMutation(UPDATE_ITEM);
+  const [show, setShow] = useState(false);
+  
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     handleAddItemToList();
@@ -51,11 +54,7 @@ const SearchItem = (props) => {
   };
 
   return (
-    <div
-      className='modal show'
-      style={{ display: 'block', position: 'initial' }}
-    >
-      <Modal.Dialog>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Search</Modal.Title>
         </Modal.Header>
@@ -83,8 +82,7 @@ const SearchItem = (props) => {
             <p>Search for an item to find listings!</p>
           )}
         </Modal.Body>
-      </Modal.Dialog>
-    </div>
+      </Modal>
   );
 };
 

@@ -8,7 +8,6 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { ThemeContext } from "./Theme";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -46,9 +45,8 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const { theme } = useContext(ThemeContext);
   return (
-    <ApolloProvider client={client} className={`App ${theme}`}>
+    <ApolloProvider client={client}>
       <Router>
         <Nav />
         <Routes>
