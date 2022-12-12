@@ -15,6 +15,9 @@ const SearchItem = (props) => {
   const [item, setItem] = useState('');
   const [addItem] = useMutation(ADD_ITEM);
   const [updateItem] = useMutation(UPDATE_ITEM);
+  const [show, setShow] = useState(false);
+  
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     handleAddItemToList();
