@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_ITEM } from "../utils/mutations";
+import { QUERY_ID } from "../utils/queries";
+import {
+  QUERY_USER,
+  QUERY_ME,
+  QUERY_SINGLE_LIST,
+  QUERY_LISTS,
+} from "../utils/queries";
 
 // import { Navigate, useParams } from "react-router-dom";
 // import { useQuery } from "@apollo/client";
@@ -27,6 +36,7 @@ function ListPage() {
         .removeEventListener("change", handleThemeChange);
     };
   }, []);
+  const addItem = useMutation(ADD_ITEM);
   // const { email } = useParams();
 
   // const { loading, data } = useQuery(email ? QUERY_USER : QUERY_ME, {
@@ -50,6 +60,9 @@ function ListPage() {
   //     </h4>
   //   );
   // }
+
+  const handleAddItem = () => {};
+
   return (
     <div className="card">
       <div className="card-body">
@@ -65,9 +78,9 @@ function ListPage() {
             <Dropdown.Item value="halloween-theme">Halloween 🎃</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
+        {/* Add item button will open the InputItem component */}
         <div className={currentTheme}>
-          {/* Add item button will open the InputItem component */}
-          <a href="#" className="btn add-item">
+          <a href="#" className="btn add-item" onClick={handleAddItem}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -117,6 +130,62 @@ function ListPage() {
             Save List
           </a>
           <ul>
+            {/* Displays items in list */}
+            {/* When we have back end functionality, all items in list will be rendered with map function */}
+            {/* <ListItem 
+            itemId='12345'
+          /> */}
+            <a className="list-item">
+              Blender $59.99 - Target{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-plus-square"
+                viewBox="0 0 16 16"
+              >
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+              </svg>{" "}
+              Add Item
+            </a>
+            {/* Search item button will open the SearchItem component */}
+            <a href="#" className="btn add-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-plus-square"
+                viewBox="0 0 16 16"
+              >
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+              </svg>{" "}
+              Search Item
+            </a>
+            <a href="#" className="btn save-list">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-box-arrow-down"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"
+                />
+                <path
+                  fillRule="evenodd"
+                  d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"
+                />
+              </svg>{" "}
+              Save List
+            </a>
+
             {/* Displays items in list */}
             {/* When we have back end functionality, all items in list will be rendered with map function */}
             {/* <ListItem 

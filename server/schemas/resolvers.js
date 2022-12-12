@@ -14,6 +14,7 @@ const resolvers = {
     },
     lists: async (parent, { email }) => {
     const params = email ? { email } : {};
+    console.log(params)
     return List.find(params);
     // .sort({ createdAt: -1 }) removed from after params above
     },

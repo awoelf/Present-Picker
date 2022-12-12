@@ -15,9 +15,9 @@ const InputItem = async (props) => {
   const [quantity, setQuantity] = useState('');
   const [color, setColor] = useState('');
   const [price, setPrice] = useState('');
-  const getItem = useQuery(QUERY_ID);
-  const addItem = useMutation(ADD_ITEM);
-  const updateItem = useMutation(UPDATE_ITEM);
+  const [getItem] = useQuery(QUERY_ID);
+  const [addItem] = useMutation(ADD_ITEM);
+  const [updateItem] = useMutation(UPDATE_ITEM);
 
   // If the item is being edited, load existing values
   if (props.itemId) {
