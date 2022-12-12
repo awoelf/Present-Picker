@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ID } from '../../utils/queries';
@@ -15,9 +16,14 @@ const InputItem = async (props) => {
   const [quantity, setQuantity] = useState('');
   const [color, setColor] = useState('');
   const [price, setPrice] = useState('');
+  const [size, setSize] = useState('');
+  const [show, setShow] = useState(false);
+
   const [getItem] = useQuery(QUERY_ID);
   const [addItem] = useMutation(ADD_ITEM);
   const [updateItem] = useMutation(UPDATE_ITEM);
+
+  const handleClose = () => setShow(false);
 
   // If the item is being edited, load existing values
   if (props.itemId) {
@@ -66,8 +72,8 @@ const InputItem = async (props) => {
 
     if (props.itemId) {
       await updateItem({
-        variables: { itemId: props.itemId, listId: props.listId, ...item }
-      })
+        variables: { itemId: props.itemId, listId: props.listId, ...item },
+      });
     } else {
       await addItem({
         variables: { listId: props.listId },
@@ -76,91 +82,86 @@ const InputItem = async (props) => {
   };
 
   return (
-    <div
-      className='modal show'
-      style={{ display: 'block', position: 'initial' }}
-    >
-      <Modal.Dialog show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add Details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <InputGroup className='mb-3'>
-            <Form.Label>Item Name</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Item name'
-              value={itemName}
-              onChange={handleInputUpdate}
-              name='itemName'
-            />
-          </InputGroup>
-          <InputGroup className='mb-3'>
-            <Form.Label>Retailer</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Retailer'
-              value={retailer}
-              onChange={handleInputUpdate}
-              name='retailer'
-            />
-          </InputGroup>
-          <InputGroup className='mb-3'>
-            <Form.Label>Link</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Item link'
-              value={link}
-              onChange={handleInputUpdate}
-              name='link'
-            />
-          </InputGroup>
-          <InputGroup className='mb-3'>
-            <Form.Label>Quantity</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='1'
-              value={quantity}
-              onChange={handleInputUpdate}
-              name='quantity'
-            />
-          </InputGroup>
-          <InputGroup className='mb-3'>
-            <Form.Label>Color</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Item color'
-              value={color}
-              onChange={handleInputUpdate}
-              name='color'
-            />
-          </InputGroup>
-          <InputGroup className='mb-3'>
-            <Form.Label>Size</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Item size'
-              value={size}
-              onChange={handleInputUpdate}
-              name='size'
-            />
-          </InputGroup>
-          <InputGroup className='mb-3'>
-            <Form.Label>Price</Form.Label>
-            <InputGroup.Text id='dollar'>$</InputGroup.Text>
-            <Form.Control
-              type='text'
-              placeholder='Item price'
-              value={price}
-              onChange={handleInputUpdate}
-              name='price'
-              aria-describedby='dollar'
-            />
-          </InputGroup>
-          <button onClick={handleAddItemToList}>Add Item</button>
-        </Modal.Body>
-      </Modal.Dialog>
-    </div>
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Add Details</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <InputGroup className='mb-3'>
+          <Form.Label>Item Name</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Item name'
+            value={itemName}
+            onChange={handleInputUpdate}
+            name='itemName'
+          />
+        </InputGroup>
+        <InputGroup className='mb-3'>
+          <Form.Label>Retailer</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Retailer'
+            value={retailer}
+            onChange={handleInputUpdate}
+            name='retailer'
+          />
+        </InputGroup>
+        <InputGroup className='mb-3'>
+          <Form.Label>Link</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Item link'
+            value={link}
+            onChange={handleInputUpdate}
+            name='link'
+          />
+        </InputGroup>
+        <InputGroup className='mb-3'>
+          <Form.Label>Quantity</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='1'
+            value={quantity}
+            onChange={handleInputUpdate}
+            name='quantity'
+          />
+        </InputGroup>
+        <InputGroup className='mb-3'>
+          <Form.Label>Color</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Item color'
+            value={color}
+            onChange={handleInputUpdate}
+            name='color'
+          />
+        </InputGroup>
+        <InputGroup className='mb-3'>
+          <Form.Label>Size</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Item size'
+            value={size}
+            onChange={handleInputUpdate}
+            name='size'
+          />
+        </InputGroup>
+        <InputGroup className='mb-3'>
+          <Form.Label>Price</Form.Label>
+          <InputGroup.Text id='dollar'>$</InputGroup.Text>
+          <Form.Control
+            type='text'
+            placeholder='Item price'
+            value={price}
+            onChange={handleInputUpdate}
+            name='price'
+            aria-describedby='dollar'
+          />
+        </InputGroup>
+        <button onClick={handleAddItemToList}>Add Item</button>
+      </Modal.Body>
+    </Modal>
   );
 };
 

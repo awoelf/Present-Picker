@@ -51,11 +51,7 @@ const SearchItem = (props) => {
   };
 
   return (
-    <div
-      className='modal show'
-      style={{ display: 'block', position: 'initial' }}
-    >
-      <Modal.Dialog>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Search</Modal.Title>
         </Modal.Header>
@@ -83,8 +79,7 @@ const SearchItem = (props) => {
             <p>Search for an item to find listings!</p>
           )}
         </Modal.Body>
-      </Modal.Dialog>
-    </div>
+      </Modal>
   );
 };
 
