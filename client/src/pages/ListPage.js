@@ -96,7 +96,11 @@ function ListPage() {
         />
         <SearchItem /> */}
         <div className={currentTheme}>
-          <a href="#" className="btn add-item" onClick={handleAddItem}>
+          <a
+            href="../../lists/AddItem.js"
+            className="btn add-item"
+            onClick={handleAddItem}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -136,7 +140,7 @@ function ListPage() {
             {/* <ListItem 
             itemId='12345'
           /> */}
-            <a className="list-item">
+            <a className="list-item" href="#">
               Blender $59.99 - Target{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -152,7 +156,7 @@ function ListPage() {
               Add Item
             </a>
             {/* Search item button will open the SearchItem component */}
-            <a href="#" className="btn add-item">
+            <a href="../../lists/SearchItem" className="btn add-item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
