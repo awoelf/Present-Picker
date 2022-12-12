@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 
-
 //TODO: Password included under email, above lists??? reference models/user.js
 export const QUERY_USER = gql`
   query user($email: String!) {
@@ -57,37 +56,36 @@ export const QUERY_SINGLE_LIST = gql`
 export const QUERY_ME = gql`
   query me {
     me {
-    _id
-    email
-    password
-    lists {
       _id
-      listName
-      listAuthor
-      description
-      theme
-    }
-
-  }
-  }
-  `;
-
-  export const QUERY_ID = gql`
-  query getItem ($listId: ID!) {
-  list(listId: $listId) {
-    items {
-      _id
-      itemName
-      authorName
-      price
-      retailer
-      link
-      quantity
-      details
-      size
-      color
-      image
+      email
+      password
+      lists {
+        _id
+        listName
+        listAuthor
+        description
+        theme
+      }
     }
   }
-}
+`;
+
+export const QUERY_ID = gql`
+  query getItem($listId: ID!) {
+    list(listId: $listId) {
+      items {
+        _id
+        itemName
+        authorName
+        price
+        retailer
+        link
+        quantity
+        details
+        size
+        color
+        image
+      }
+    }
+  }
 `;
