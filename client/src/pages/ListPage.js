@@ -4,6 +4,8 @@ import { ThemeContext } from "../Theme";
 import ListBirthday from "../styles/ListBirthday.css";
 import ListChristmas from "../styles/ListChristmas.css";
 import ListHalloween from "../styles/ListHalloween.css";
+import { QUERY_USER, QUERY_ME, QUERY_SINGLE_LIST, QUERY_LISTS } from '../utils/queries';
+
 
 // import { Navigate, useParams } from "react-router-dom";
 // import { useQuery } from "@apollo/client";
