@@ -89,9 +89,23 @@ mutation updateList($listId: ID!, $listName: String!) {
 
 //update item
 export const UPDATE_ITEM = gql`
-mutation updateItem($itemId: ID!, $listId: ID!) {
-  updateItem(itemId: $itemId, listId: $listId) {
+mutation UpdateItem($itemId: ID!, $itemName: String!, $price: Int!) {
+  updateItem(itemId: $itemId, itemName: $itemName, price: $price) {
     _id
+    listName
+    items {
+      _id
+      itemName
+      price
+      authorName
+      color
+      details
+      image
+      link
+      quantity
+      retailer
+      size
+    }
   }
 }
 `;

@@ -142,20 +142,23 @@ const resolvers = {
     updateItem: async (parent, { itemId, ...args }, context) => {
         if (context.user) {
           //if I use Item, an error occurs
+          console.log(args.color);
           const updatedItem = await List.findOneAndUpdate(
-            {_id: itemId},
+            {"items._id": itemId},
+
             {$set:{
-              itemName: args.itemName,
-              price: args.price,
-              retailer: args.retailer,
-              link: args.link,
-              quantity: args.quantity,
-              size: args.size,
-              color: args.color,
-              details: args.details,
-              image: args.image,}},
+              "items.$.itemName": args.itemName,
+              "items.$.price": args.price,
+              "items.$.retailer": args.retailer,
+              "items.$.link": args.link,
+              "items.$.quantity": args.quantity,
+              "items.$.size": args.size,
+              "items.$.color": args.color,
+              "items.$.details": args.details,
+              "items.$.image": args.image,}},
               { runValidators: true, new: true }
           );
+          console.log(updatedItem);
         return updatedItem;
         }
         throw new AuthenticationError('You need to be logged in!');
