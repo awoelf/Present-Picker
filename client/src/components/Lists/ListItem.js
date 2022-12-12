@@ -7,8 +7,8 @@ import { REMOVE_ITEM } from '../../utils/mutations';
 // Renders an item for display in a list
 // Accepts an item id and list id
 const ListItem = async (props) => {
-  const getItem = useQuery(QUERY_ID);
-  const removeItem = useMutation(REMOVE_ITEM);
+  const [getItem] = useQuery(QUERY_ID);
+  const [removeItem] = useMutation(REMOVE_ITEM);
 
   // Load item from props.itemId
   const loadItem = await getItem({
