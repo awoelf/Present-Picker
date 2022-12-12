@@ -97,7 +97,7 @@ function ListPage() {
         <SearchItem /> */}
         <div className={currentTheme}>
           <a
-            href="../../lists/AddItem.js"
+            // href="../../lists/AddItem.js"
             className="btn add-item"
             onClick={handleAddItem}
           >
