@@ -58,7 +58,6 @@ export const QUERY_ME = gql`
     me {
       _id
       email
-      password
       lists {
         _id
         listName
