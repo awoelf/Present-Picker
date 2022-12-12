@@ -26,7 +26,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_LIST = gql`
-  mutation addList($listName: String, $listAuthor: String!) {
+  mutation AddList($listName: String, $listAuthor: String!) {
   addList(listName: $listName, listAuthor: $listAuthor) {
     _id
     theme
@@ -36,7 +36,6 @@ export const ADD_LIST = gql`
   }
 }
 `;
-
 export const ADD_ITEM = gql`
   mutation addItem($listId: ID!, $itemName: String!) {
     addItem(listId: $listId, itemName: $itemName) {
