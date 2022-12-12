@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ID } from '../../utils/queries';
-import { ADD_ITEM } from '../../utils/mutations';
+import { ADD_ITEM, UPDATE_ITEM } from '../../utils/mutations';
 
 // This component is for the user to manually input values for an item they will add to the list.
 // props will contain the list id and item id (if being edited)
@@ -14,10 +14,10 @@ const InputItem = async (props) => {
   const [link, setLink] = useState('');
   const [quantity, setQuantity] = useState('');
   const [color, setColor] = useState('');
-  const [size, setSize] = useState('');
   const [price, setPrice] = useState('');
-  const [getItem] = useQuery(QUERY_ID);
-  const [addItem, { error }] = useMutation(ADD_ITEM);
+  const getItem = useQuery(QUERY_ID);
+  const addItem = useMutation(ADD_ITEM);
+  const updateItem = useMutation(UPDATE_ITEM);
 
   // If the item is being edited, load existing values
   if (props.itemId) {
@@ -65,7 +65,9 @@ const InputItem = async (props) => {
     setItem({ itemName, retailer, link, quantity, color, size, price });
 
     if (props.itemId) {
-      // UPDATE item
+      await updateItem({
+        variables: { itemId: props.itemId, listId: props.listId, ...item }
+      })
     } else {
       await addItem({
         variables: { listId: props.listId },
@@ -78,7 +80,7 @@ const InputItem = async (props) => {
       className='modal show'
       style={{ display: 'block', position: 'initial' }}
     >
-      <Modal.Dialog>
+      <Modal.Dialog show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Details</Modal.Title>
         </Modal.Header>

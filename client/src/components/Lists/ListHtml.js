@@ -3,7 +3,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_SINGLE_LIST } from '../../utils/queries';
 
 const ListHtml = async (props) => {
-    const [getSingleList] = useQuery(QUERY_SINGLE_LIST);
+    const getSingleList = useQuery(QUERY_SINGLE_LIST);
     const loadList = await getSingleList({
         variables: { listId: props.listId }
     })

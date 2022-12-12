@@ -21,7 +21,7 @@ const userSchema = new Schema({
       validator: (password) => {
         return validator.isStrongPassword(password);
       },
-      message: (password) => `${password.value} is not a valid password.`,
+      message: (password) => `Invalid password. Password must be at least 8 characters long and have 1 uppercase, 1 lowercase, 1 number, and 1 special character.`,
     },
   },
   lists: [
