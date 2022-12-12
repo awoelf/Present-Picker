@@ -30,34 +30,48 @@ function Navigation() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
-          <NavLink to="/" activeClassName="active">
-            <a className="nav-link">Home</a>
+          <NavLink to="/" activeclassname="active">
+            <a className="nav-link" href="/">
+              Home
+            </a>
           </NavLink>
-          <NavLink to="/dashboard" activeClassName="active">
-            <a className="nav-link">Dashboard</a>
+          <NavLink to="/dashboard" activeclassname="active">
+            <a className="nav-link" href="/dashboard">
+              Dashboard
+            </a>
           </NavLink>
-          <NavLink to="/me" activeClassName="active">
+          <NavLink to="/me" activeclassname="active">
             <a className="nav-link">Profile</a>
           </NavLink>
-          <NavLink to="/list-page" activeClassName="active">
-            <a className="nav-link">List Page</a>
+          <NavLink to="/list-page" activeclassname="active">
+            <a className="nav-link" href="/list-page">
+              List Page
+            </a>
           </NavLink>
           {Auth.loggedIn() ? (
             <>
-              <NavLink activeClassName="active" to="/me" className={"mt-2"}>
+              <NavLink activeclassname="active" to="/me" className={"mt-2"}>
                 Logged in as {Auth.getProfile().data.email}
-                <a className="nav-link d-inline mt-3" onClick={logout}>
+                <a
+                  className="nav-link d-inline mt-3"
+                  onClick={logout}
+                  href="/me"
+                >
                   Logout
                 </a>
               </NavLink>
             </>
           ) : (
             <>
-              <NavLink to="/login" activeClassName="active" className={"mt-2"}>
-                <a className="nav-link d-inline">Login</a>
+              <NavLink to="/login" activeclassname="active" className={"mt-2"}>
+                <a className="nav-link d-inline" href="/login">
+                  Login
+                </a>
               </NavLink>
-              <NavLink to="/signup" activeClassName="active" className={"mt-2"}>
-                <a className="nav-link d-inline">Sign Up</a>
+              <NavLink to="/signup" activeclassname="active" className={"mt-2"}>
+                <a className="nav-link d-inline" href="/signup">
+                  Sign Up
+                </a>
               </NavLink>
             </>
           )}
