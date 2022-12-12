@@ -13,7 +13,7 @@ import List from '../components/Lists/List';
 
 function Dashboard() {
   const { email } = useParams();
-  const addList = useMutation(ADD_LIST);
+  const [addList] = useMutation(ADD_LIST);
   const { loading, data } = useQuery(email ? QUERY_USER : QUERY_ME, {
     variables: { email },
   });
