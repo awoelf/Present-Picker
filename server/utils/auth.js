@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 //TODO: update secret and add to gitignore
 const secret = 'mysecretssshhhhhhh';
-const expiration = '2h';
+const expiration = '36h';
 
 module.exports = {
   authMiddleware: function ({ req }) {

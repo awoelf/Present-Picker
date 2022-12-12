@@ -65,7 +65,7 @@ const typeDefs = gql`
     updateItem(
         itemId: ID!, 
         itemName: String!,
-        price: Int,
+        price: Int!,
         retailer: String,
         link: String,
         quantity: Int,
