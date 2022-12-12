@@ -1,3 +1,61 @@
+:root {
+  --default-primary:#198754;
+  --default-secondary:#67778F;
+  --default-tertiary:#d3603a;
+  --default-light: white;
+  --default-dark: black;
+
+  --christmas-primary:#D81212;
+  --christmas-secondary:#05B25C;
+  --christmas-tertiary:#338FE5;
+  --christmas-light:#E9C577;
+  --christmas-dark:#2D1B07;
+
+  --birthday-primary:#EB2D59;
+  --birthday-secondary:#20D4B0;
+  --birthday-tertiary:#882FF5;
+  --birthday-light:#F6E33A;
+  --birthday-dark:#3B3B3B;
+
+  --halloween-primary:#F78025;
+  --halloween-secondary:#7209B7;
+  --halloween-tertiary:#960B39;
+  --halloween-light:#EBEBEB;
+  --halloween-dark:#000000;
+}
+
+.default-theme {
+  --default-primary:var(--default-primary);
+  --default-secondary:var(--default-secondary);
+  --default-tertiary:var(--default-tertiary);
+  --default-light:var(--default-light);
+  --default-dark:var(--default-dark);
+}
+
+.christmas-theme {
+  --christmas-primary:var(--christmas-primary);
+  --christmas-secondary:var(--christmas-secondary);
+  --christmas-tertiary:var(--christmas-tertiary);
+  --christmas-light:var(--christmas-light);
+  --christmas-dark:var(--christmas-dark);
+}
+
+.birthday-theme {
+  --birthday-primary:var(--birthday-primary);
+  --birthday-secondary:var(--birthday-secondary);
+  --birthday-tertiary:var(--birthday-tertiary);
+  --birthday-light:var(--birthday-light);
+  --birthday-dark:var(--birthday-dark);
+}
+
+.halloween-theme{
+  --halloween-primary:var(--halloween-primary);
+  --halloween-secondary:var(--halloween-secondary);
+  --halloween-tertiary:var(--halloween-tertiary);
+  --halloween-light:var(--halloween-light);
+  --halloween-dark:var(--halloween-dark);
+}
+
 .App {
   text-align: center;
 }
