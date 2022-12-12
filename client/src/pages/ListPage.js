@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { ThemeContext } from "../Theme";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_ITEM } from "../utils/mutations";
+import { QUERY_ID } from "../utils/queries";
 import ListBirthday from "../styles/ListBirthday.css";
 import ListChristmas from "../styles/ListChristmas.css";
 import ListHalloween from "../styles/ListHalloween.css";
@@ -17,6 +20,7 @@ import { QUERY_USER, QUERY_ME, QUERY_SINGLE_LIST, QUERY_LISTS } from '../utils/q
 
 function ListPage() {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const addItem = useMutation(ADD_ITEM);
   // const { email } = useParams();
 
   // const { loading, data } = useQuery(email ? QUERY_USER : QUERY_ME, {
@@ -40,6 +44,11 @@ function ListPage() {
   //     </h4>
   //   );
   // }
+
+  const handleAddItem = () => {
+
+  }
+
   return (
     <div className="card">
       <div className="card-body">
@@ -74,7 +83,7 @@ function ListPage() {
           </Dropdown.Menu>
         </Dropdown>
         {/* Add item button will open the InputItem component */}
-        <a href="#" className="btn add-item">
+        <a href="#" className="btn add-item" onClick={handleAddItem}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

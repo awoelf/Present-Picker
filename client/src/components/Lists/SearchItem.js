@@ -13,8 +13,8 @@ const SearchItem = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState('');
   const [item, setItem] = useState('');
-  const addItem = useMutation(ADD_ITEM);
-  const updateItem = useMutation(UPDATE_ITEM);
+  const [addItem] = useMutation(ADD_ITEM);
+  const [updateItem] = useMutation(UPDATE_ITEM);
 
   useEffect(() => {
     handleAddItemToList();

@@ -4,7 +4,7 @@ import { REMOVE_ITEM } from '../../utils/mutations';
 // Component for displaying user lists in dashboard
 // Accepts the list id, list name, and number of items in list as arguments
 const List = (props) => {
-    const RemoveList = useMutation(REMOVE_ITEM);
+    const [RemoveList] = useMutation(REMOVE_ITEM);
     const handleEmailList = () => {
         // NAVIGATE TO EMAIL PAGE
         // PASS props.listID
