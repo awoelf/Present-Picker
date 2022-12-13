@@ -52,11 +52,11 @@ From the List Page, the user can add or update an item to their list.
 ------------------------------------------------------------
  
 ### Technologies used in this project were:
-1.React.js
+1. React.js
 2. CSS
-3.Bootstrap
-4.Trello
-5.Miro
+3. Bootstrap
+4. Trello
+5. Miro
 6. Figma
 7. Serp API
 8. Heroku
