@@ -19,4 +19,4 @@ const getSearchResults = async (query) => {
   return results;
 };
 
-module.exports = getSearchResults;
+export default getSearchResults;
