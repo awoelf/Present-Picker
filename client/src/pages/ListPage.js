@@ -77,7 +77,7 @@ function ListPage() {
         <h1 className="card-title">List Name</h1>
         <h6 className="card-text">Description of list</h6>
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown.Toggle className="bg-black text-white" id="dropdown-basic">
             List Theme
           </Dropdown.Toggle>
           <Dropdown.Menu>
@@ -87,10 +87,7 @@ function ListPage() {
           </Dropdown.Menu>
         </Dropdown>
         {/* Add item button will open the InputItem component */}
-        <AddItem 
-          show={showAddItem}
-          setShow={setShowAddItem}
-        />
+        <AddItem show={showAddItem} setShow={setShowAddItem} />
         {/* <InputItem 
 
         />
@@ -140,7 +137,7 @@ function ListPage() {
             {/* <ListItem 
             itemId='12345'
           /> */}
-            <a className="list-item" href="#">
+            <li className="list-item" href="#">
               Blender $59.99 - Target{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +151,7 @@ function ListPage() {
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg>{" "}
               Add Item
-            </a>
+            </li>
             {/* Search item button will open the SearchItem component */}
             <a href="../../lists/SearchItem" className="btn add-item">
               <svg

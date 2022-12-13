@@ -53,10 +53,11 @@ const resolvers = {
       return { token, user };
     },
 
-    addList: async (parent, { listText }, context) => {
+    addList: async (parent, { listName }, context) => {
+      console.log("listName =", listName)
       if (context.user) {
         const list = await List.create({
-          listText,
+          listName,
           listAuthor: context.user.email,
         });
 
