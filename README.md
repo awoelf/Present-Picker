@@ -4,8 +4,8 @@ Create and send wish lists for holidays and more!
 Project Goal:
 The user will be able to login, add lists for different occasions, then add items to the list.
  
-Deployed Link:  </br>
-Deployed Date:
+Deployed Link:  https://present-picker.herokuapp.com/</br>
+Deployed Date:  December 13, 2022
  
 ## Contributors
   Alexis Woelffer: https://github.com/awoelf</br>
