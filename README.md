@@ -44,11 +44,15 @@ The user is able to signup, login, and logout. They can add a list and add items
 ------------------------------------------------------------
 ### Website Flow
 When the user enters the website, they are able to signup, or if they are signed up, they can login and logout.
- 
+![Signup](https://github.com/awoelf/Present-Picker/blob/main/assets/Sign%20Up.png) 
+
+![Login](https://github.com/awoelf/Present-Picker/blob/main/assets/Login.png)
+
 From the Dashboard, the user will be able to enter a list name.
- 
+![Dashboard](https://github.com/awoelf/Present-Picker/blob/main/assets/Dashboard.png) 
+
 From the List Page, the user can add or update an item to their list.
- 
+![List Page](https://github.com/awoelf/Present-Picker/blob/main/assets/List%20Page.png)
 ------------------------------------------------------------
  
 ### Technologies used in this project were:
