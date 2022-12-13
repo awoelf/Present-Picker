@@ -13,8 +13,7 @@ const getSearchResults = async (query) => {
   };
 
   const results = search.json(params, (data) => {
-    // console.log(data["inline_shopping_results"]); Display search results in console
-    return data["inline_shopping_results"];
+    return data;
   });
 
   return results;
